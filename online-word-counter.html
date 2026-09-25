@@ -1,0 +1,2539 @@
+<style>
+/* =========================================================
+   FINITE SEO TOOLS - WORD COUNTER - STAGE 6 MASTER TEMPLATE
+========================================================= */
+
+.fst-word-counter,
+.fst-word-counter *,
+.fst-word-counter *::before,
+.fst-word-counter *::after {
+  box-sizing: border-box;
+}
+
+.fst-word-counter {
+  --fst-primary: #6366f1;
+  --fst-primary-dark: #4f46e5;
+  --fst-purple: #7c3aed;
+  --fst-text: #17172b;
+  --fst-muted: #667085;
+  --fst-border: #e7e7f0;
+  --fst-card: #ffffff;
+  --fst-soft: #f3f1ff;
+
+  display: block;
+  width: 100%;
+  max-width: 1050px;
+  min-width: 0;
+
+  margin: 30px auto;
+  padding: 0 16px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--fst-text);
+  overflow: visible;
+}
+
+/* ================= WIDTH CONTROL ================= */
+
+.fst-word-counter .fst-tool-header,
+.fst-word-counter .fst-tool-card,
+.fst-word-counter .fst-content-card,
+.fst-word-counter .fst-faq,
+.fst-word-counter .fst-related {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* ================= HEADER ================= */
+
+.fst-tool-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.fst-tool-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px 13px;
+  border-radius: 50px;
+
+  background: #f0edff;
+  color: var(--fst-primary-dark);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  margin-bottom: 12px;
+}
+
+.fst-tool-badge span {
+  width: 7px;
+  height: 7px;
+
+  background: var(--fst-primary);
+  border-radius: 50%;
+
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.fst-tool-header h1 {
+  margin: 0;
+
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.15;
+  letter-spacing: -1px;
+
+  font-weight: 800;
+
+  overflow-wrap: break-word;
+}
+
+.fst-tool-header p {
+  width: 100%;
+  max-width: 680px;
+
+  margin: 12px auto 0;
+
+  color: var(--fst-muted);
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* ================= LAST UPDATED ================= */
+
+.fst-last-updated {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  margin: 13px auto 0;
+
+  color: var(--fst-muted);
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.fst-last-updated-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  background: #f0edff;
+  color: var(--fst-primary-dark);
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.fst-last-updated strong {
+  color: var(--fst-text);
+  font-weight: 700;
+}
+
+/* ================= TOOL CARD ================= */
+
+.fst-tool-card {
+  background: var(--fst-card);
+
+  border: 1px solid var(--fst-border);
+  border-radius: 22px;
+
+  padding: 22px;
+
+  box-shadow:
+    0 12px 35px
+    rgba(35, 30, 80, 0.07);
+}
+
+/* ================= INPUT ================= */
+
+.fst-input-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 10px;
+
+  width: 100%;
+
+  margin-bottom: 10px;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.fst-input-label label {
+  min-width: 0;
+}
+
+.fst-input-label small {
+  color: var(--fst-muted);
+  font-weight: 500;
+
+  flex: 0 0 auto;
+}
+
+#fstWordInput {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  min-height: 270px;
+
+  resize: vertical;
+
+  border: 1.5px solid var(--fst-border);
+  border-radius: 16px;
+
+  background: #fcfcff;
+
+  padding: 18px;
+
+  outline: none;
+
+  color: var(--fst-text);
+
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.7;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+#fstWordInput::placeholder {
+  color: #9aa0b2;
+}
+
+#fstWordInput:focus {
+  border-color: var(--fst-primary);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(99, 102, 241, 0.10);
+}
+
+/* ================= STATISTICS ================= */
+
+.fst-stats {
+  display: grid;
+
+  width: 100%;
+  max-width: 100%;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-top: 18px;
+}
+
+.fst-stat {
+  width: 100%;
+  min-width: 0;
+
+  border: 1px solid var(--fst-border);
+
+  background: #fafaff;
+
+  border-radius: 15px;
+
+  padding: 16px 10px;
+
+  text-align: center;
+
+  overflow: hidden;
+}
+
+.fst-stat-value {
+  display: block;
+
+  color: var(--fst-primary-dark);
+
+  font-size: clamp(20px, 2vw, 25px);
+  line-height: 1.2;
+
+  font-weight: 800;
+
+  overflow-wrap: break-word;
+}
+
+.fst-stat-label {
+  display: block;
+
+  margin-top: 5px;
+
+  color: var(--fst-muted);
+
+  font-size: 12px;
+  line-height: 1.4;
+
+  font-weight: 600;
+
+  overflow-wrap: anywhere;
+}
+
+/* ================= READING TIME ================= */
+
+.fst-reading-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-width: 0;
+
+  gap: 15px;
+
+  margin-top: 12px;
+
+  padding: 15px 17px;
+
+  border-radius: 15px;
+
+  background: var(--fst-soft);
+}
+
+.fst-reading-time strong {
+  font-size: 14px;
+  min-width: 0;
+}
+
+#fstReadingTime {
+  color: var(--fst-primary-dark);
+
+  font-weight: 800;
+
+  flex: 0 0 auto;
+}
+
+/* ================= BUTTONS ================= */
+
+.fst-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 100%;
+
+  gap: 10px;
+
+  margin-top: 18px;
+}
+
+.fst-btn {
+  appearance: none;
+
+  border: 0;
+
+  cursor: pointer;
+
+  min-height: 44px;
+
+  padding: 0 18px;
+
+  border-radius: 12px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  transition:
+    transform .15s ease,
+    box-shadow .2s ease;
+}
+
+.fst-btn:hover {
+  transform: translateY(-1px);
+}
+
+.fst-btn:active {
+  transform: translateY(0);
+}
+
+.fst-btn-primary {
+  color: #fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--fst-primary),
+      var(--fst-purple)
+    );
+
+  box-shadow:
+    0 7px 18px
+    rgba(99, 102, 241, .22);
+}
+
+.fst-btn-secondary {
+  color: var(--fst-primary-dark);
+  background: #f1efff;
+}
+
+.fst-btn:focus-visible {
+  outline:
+    3px solid
+    rgba(99, 102, 241, .25);
+
+  outline-offset: 2px;
+}
+
+/* ================= SEO CONTENT ================= */
+
+.fst-content-card {
+  margin-top: 22px;
+
+  padding: 25px;
+
+  background: #fff;
+
+  border: 1px solid var(--fst-border);
+  border-radius: 20px;
+
+  overflow-wrap: break-word;
+}
+
+.fst-content-card h2 {
+  margin: 0 0 12px;
+
+  font-size: 23px;
+  line-height: 1.3;
+}
+
+.fst-content-card h3 {
+  margin: 22px 0 8px;
+
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.fst-content-card p,
+.fst-content-card li {
+  color: #596174;
+
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.fst-content-card ul,
+.fst-content-card ol {
+  padding-left: 22px;
+}
+
+/* ================= FAQ ================= */
+
+.fst-faq {
+  margin-top: 25px;
+}
+
+.fst-faq-heading {
+  width: 100%;
+  text-align: center;
+
+  margin-bottom: 18px;
+}
+
+.fst-faq-badge {
+  display: inline-block;
+
+  padding: 6px 12px;
+
+  border-radius: 50px;
+
+  background: #f0edff;
+
+  color: var(--fst-primary-dark);
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.fst-faq-heading h2 {
+  margin: 10px 0 0;
+
+  font-size: 27px;
+
+  overflow-wrap: break-word;
+}
+
+.fst-faq-divider {
+  width: 55px;
+  height: 3px;
+
+  border-radius: 5px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--fst-primary),
+      var(--fst-purple)
+    );
+
+  margin: 12px auto 20px;
+}
+
+.fst-faq-item {
+  width: 100%;
+  max-width: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid var(--fst-border);
+  border-radius: 15px;
+
+  background: #fff;
+
+  margin-bottom: 10px;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.fst-faq-item.active {
+  border-color: var(--fst-primary);
+
+  box-shadow:
+    0 7px 22px
+    rgba(99, 102, 241, .08);
+}
+
+.fst-faq-question {
+  width: 100%;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 17px 18px;
+
+  color: var(--fst-text);
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+
+  text-align: left;
+}
+
+.fst-faq-question > span:first-child {
+  min-width: 0;
+
+  overflow-wrap: anywhere;
+}
+
+.fst-faq-icon {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 8px;
+
+  background: #f0edff;
+
+  font-size: 0;
+
+  display: block;
+}
+
+.fst-faq-icon::before {
+  content: "";
+
+  position: absolute;
+
+  width: 12px;
+  height: 2px;
+
+  background: var(--fst-primary-dark);
+
+  left: 8px;
+  top: 13px;
+
+  border-radius: 2px;
+}
+
+.fst-faq-icon::after {
+  content: "";
+
+  position: absolute;
+
+  width: 2px;
+  height: 12px;
+
+  background: var(--fst-primary-dark);
+
+  left: 13px;
+  top: 8px;
+
+  border-radius: 2px;
+
+  transition: opacity .2s ease;
+}
+
+.fst-faq-item.active
+.fst-faq-icon::after {
+  opacity: 0;
+}
+
+.fst-faq-answer {
+  display: none;
+
+  width: 100%;
+
+  padding: 0 18px 18px;
+
+  color: #596174;
+
+  font-size: 14px;
+  line-height: 1.7;
+
+  overflow-wrap: anywhere;
+}
+
+.fst-faq-item.active
+.fst-faq-answer {
+  display: block;
+}
+
+/* ================= RELATED TOOLS ================= */
+
+.fst-related {
+  margin-top: 25px;
+}
+
+.fst-related h2 {
+  margin: 0 0 14px;
+
+  font-size: 27px;
+  line-height: 1.3;
+}
+
+.fst-related-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.fst-related-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 120px;
+  padding: 20px;
+
+  text-decoration: none;
+  color: var(--fst-text);
+
+  background: #fff;
+
+  border: 1px solid var(--fst-border);
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 24px rgba(35, 30, 80, .04);
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.fst-related-link:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--fst-primary);
+
+  box-shadow:
+    0 12px 28px rgba(99, 102, 241, .12);
+}
+
+.fst-related-link:focus-visible {
+  outline:
+    3px solid
+    rgba(99, 102, 241, .20);
+
+  outline-offset: 2px;
+}
+
+.fst-related-name {
+  display: block;
+
+  color: var(--fst-text);
+
+  font-size: 16px;
+  line-height: 1.5;
+
+  font-weight: 800;
+}
+
+.fst-related-action {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 16px;
+
+  color: var(--fst-primary-dark);
+
+  font-size: 13px;
+  line-height: 1;
+
+  font-weight: 800;
+}
+
+.fst-related-arrow {
+  display: inline-block;
+
+  font-size: 18px;
+  line-height: 1;
+
+  transition:
+    transform .2s ease;
+}
+
+.fst-related-link:hover
+.fst-related-arrow {
+  transform: translateX(4px);
+}
+
+/* ================= LARGE TABLET ================= */
+
+@media (max-width: 1024px) {
+
+  .fst-word-counter {
+    max-width: 100%;
+
+    margin: 25px auto;
+
+    padding: 0 18px;
+  }
+
+  .fst-tool-header h1 {
+    font-size: clamp(32px, 6vw, 42px);
+  }
+
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
+
+  .fst-related-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .fst-related-link {
+    min-height: 110px;
+    padding: 16px;
+  }
+
+  .fst-related-name {
+    font-size: 14px;
+  }
+
+}
+
+/* ================= SMALL TABLET ================= */
+
+@media (max-width: 768px) {
+
+  .fst-word-counter {
+    margin: 22px auto;
+
+    padding: 0 14px;
+  }
+
+  .fst-tool-card {
+    padding: 18px;
+
+    border-radius: 19px;
+  }
+
+  .fst-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  #fstWordInput {
+    min-height: 240px;
+
+    padding: 16px;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .fst-related-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .fst-word-counter {
+    margin: 18px auto;
+
+    padding: 0 11px;
+  }
+
+  .fst-tool-header {
+    margin-bottom: 18px;
+  }
+
+  .fst-tool-header h1 {
+    font-size: clamp(29px, 9vw, 36px);
+  }
+
+  .fst-tool-header p {
+    font-size: 14px;
+
+    line-height: 1.6;
+  }
+
+  .fst-last-updated {
+    font-size: 11px;
+  }
+
+  .fst-tool-card {
+    padding: 14px;
+
+    border-radius: 17px;
+  }
+
+  .fst-input-label {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 4px;
+  }
+
+  .fst-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .fst-stat {
+    padding: 14px 8px;
+  }
+
+  .fst-stat-value {
+    font-size: 22px;
+  }
+
+  .fst-stat-label {
+    font-size: 11px;
+  }
+
+  #fstWordInput {
+    min-height: 220px;
+
+    padding: 14px;
+
+    font-size: 15px;
+  }
+
+  .fst-reading-time {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 5px;
+
+    padding: 14px;
+  }
+
+  .fst-actions {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .fst-btn {
+    width: 100%;
+
+    min-width: 0;
+
+    padding: 0 10px;
+  }
+
+  .fst-content-card {
+    padding: 18px;
+
+    border-radius: 17px;
+  }
+
+  .fst-content-card h2 {
+    font-size: 21px;
+  }
+
+  .fst-content-card h3 {
+    font-size: 17px;
+  }
+
+  .fst-content-card p,
+  .fst-content-card li {
+    font-size: 14px;
+  }
+
+  .fst-faq-heading h2 {
+    font-size: 24px;
+  }
+
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+
+  .fst-related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fst-related-link {
+    min-height: auto;
+  }
+
+}
+
+/* ================= EXTRA SMALL MOBILE ================= */
+
+@media (max-width: 420px) {
+
+  .fst-word-counter {
+    padding: 0 8px;
+  }
+
+  .fst-tool-card {
+    padding: 12px;
+  }
+
+  .fst-stats {
+    gap: 8px;
+  }
+
+  .fst-stat {
+    padding: 12px 6px;
+  }
+
+  .fst-stat-value {
+    font-size: 20px;
+  }
+
+  .fst-stat-label {
+    font-size: 10px;
+  }
+
+  .fst-actions {
+    grid-template-columns:
+      1fr;
+  }
+
+  .fst-faq-question {
+    padding: 15px;
+  }
+
+  .fst-faq-answer {
+    padding: 0 15px 15px;
+  }
+
+}
+
+
+/* =========================================================
+   STAGE 6 — FINITE SEO TOOLS MASTER TOOL-PAGE SYSTEM
+   Visual/UX refinement only. Existing counting logic preserved.
+========================================================= */
+.fst-word-counter{
+  --fst-primary:#6366f1;
+  --fst-primary-dark:#4f46e5;
+  --fst-purple:#7c3aed;
+  --fst-text:#17172b;
+  --fst-muted:#667085;
+  --fst-border:#e6e7f0;
+  --fst-soft:#f6f5ff;
+  --fst-green:#159f78;
+  --fst-shadow:0 18px 55px rgba(31,35,75,.08);
+}
+
+.fst-word-counter .fst-tool-header{
+  position:relative;
+  padding:28px 20px 25px;
+  margin-bottom:18px;
+  border:1px solid rgba(99,102,241,.12);
+  border-radius:24px;
+  background:linear-gradient(180deg,#ffffff 0%,#fbfbff 100%);
+  box-shadow:0 10px 35px rgba(31,35,75,.045);
+  overflow:hidden;
+}
+
+.fst-word-counter .fst-tool-header::before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  right:-100px;
+  top:-130px;
+  border-radius:50%;
+  background:rgba(99,102,241,.08);
+  pointer-events:none;
+}
+
+.fst-word-counter .fst-tool-badge{
+  position:relative;
+  z-index:1;
+  margin-bottom:13px;
+  border:1px solid rgba(99,102,241,.12);
+  box-shadow:0 4px 12px rgba(99,102,241,.06);
+}
+
+.fst-tool-kicker{
+  position:relative;
+  z-index:1;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin:0 auto 12px;
+  padding:7px 10px;
+  border-radius:10px;
+  background:#f4f3ff;
+  color:var(--fst-primary-dark);
+  font-size:11px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.fst-tool-kicker-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--fst-primary),var(--fst-purple));
+  box-shadow:0 0 0 4px rgba(99,102,241,.09);
+}
+
+.fst-word-counter .fst-tool-header h1,
+.fst-word-counter .fst-tool-header p,
+.fst-word-counter .fst-last-updated{
+  position:relative;
+  z-index:1;
+}
+
+.fst-word-counter .fst-tool-header h1{
+  letter-spacing:-1.35px;
+}
+
+.fst-word-counter .fst-tool-card{
+  position:relative;
+  border-color:rgba(99,102,241,.13);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:var(--fst-shadow);
+  background:rgba(255,255,255,.98);
+}
+
+.fst-tool-card-topline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.fst-tool-card-title{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  min-width:0;
+}
+
+.fst-tool-card-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 42px;
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  background:linear-gradient(135deg,#f0efff,#e8e4ff);
+  color:var(--fst-primary-dark);
+  border:1px solid rgba(99,102,241,.13);
+  font-size:16px;
+  font-weight:900;
+  box-shadow:0 7px 16px rgba(99,102,241,.08);
+}
+
+.fst-tool-card-heading{
+  min-width:0;
+}
+
+.fst-tool-card-heading strong{
+  display:block;
+  color:var(--fst-text);
+  font-size:15px;
+  line-height:1.35;
+}
+
+.fst-tool-card-heading span{
+  display:block;
+  margin-top:3px;
+  color:var(--fst-muted);
+  font-size:12px;
+  line-height:1.4;
+}
+
+.fst-tool-live-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  flex:0 0 auto;
+  padding:7px 10px;
+  border:1px solid #dcefe8;
+  border-radius:999px;
+  background:#f4fbf8;
+  color:#157a60;
+  font-size:11px;
+  line-height:1;
+  font-weight:800;
+}
+
+.fst-tool-live-pill::before{
+  content:"";
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#1fa67d;
+}
+
+.fst-word-counter #fstWordInput{
+  min-height:290px;
+  border-color:#dddff0;
+  background:#fdfdff;
+  box-shadow:inset 0 1px 2px rgba(20,24,60,.025);
+}
+
+.fst-word-counter #fstWordInput:hover{
+  border-color:#cfd1e7;
+}
+
+.fst-word-counter #fstWordInput:focus{
+  border-color:var(--fst-primary);
+  background:#fff;
+  box-shadow:0 0 0 4px rgba(99,102,241,.09),inset 0 1px 2px rgba(20,24,60,.025);
+}
+
+.fst-word-counter .fst-stats{
+  gap:10px;
+}
+
+.fst-word-counter .fst-stat{
+  position:relative;
+  min-height:92px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:14px 9px;
+  background:linear-gradient(180deg,#fff 0%,#fafaff 100%);
+  border-color:#e5e6f0;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+
+.fst-word-counter .fst-stat:hover{
+  transform:translateY(-2px);
+  border-color:#d6d7ed;
+  box-shadow:0 8px 22px rgba(31,35,75,.06);
+}
+
+.fst-word-counter .fst-stat-value{
+  font-variant-numeric:tabular-nums;
+}
+
+.fst-word-counter .fst-reading-time{
+  border:1px solid rgba(99,102,241,.11);
+  background:linear-gradient(135deg,#f6f4ff,#faf9ff);
+}
+
+.fst-tool-trust-row{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+
+.fst-tool-trust-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+  padding:11px 12px;
+  border:1px solid #e9e9f1;
+  border-radius:12px;
+  background:#fcfcff;
+  color:#596174;
+  font-size:11px;
+  line-height:1.35;
+  font-weight:700;
+}
+
+.fst-tool-trust-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 25px;
+  width:25px;
+  height:25px;
+  border-radius:8px;
+  background:#f0edff;
+  color:var(--fst-primary-dark);
+  font-size:12px;
+  font-weight:900;
+}
+
+.fst-word-counter .fst-actions{
+  margin-top:16px;
+}
+
+.fst-word-counter .fst-btn{
+  min-height:46px;
+  border:1px solid transparent;
+}
+
+.fst-word-counter .fst-btn-secondary{
+  border-color:#e2e1ee;
+  background:#fff;
+}
+
+.fst-word-counter .fst-btn-primary:hover{
+  box-shadow:0 10px 24px rgba(99,102,241,.26);
+}
+
+.fst-word-counter .fst-btn-secondary:hover{
+  border-color:#cfd0e5;
+  background:#fafaff;
+}
+
+.fst-word-counter .fst-content-card,
+.fst-word-counter .fst-faq,
+.fst-word-counter .fst-related{
+  position:relative;
+}
+
+.fst-section-label{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:9px;
+  color:var(--fst-primary-dark);
+  font-size:11px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.fst-section-label::before{
+  content:"";
+  width:18px;
+  height:3px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--fst-primary),var(--fst-purple));
+}
+
+.fst-word-counter .fst-content-card{
+  padding:27px;
+  box-shadow:0 9px 30px rgba(31,35,75,.035);
+}
+
+.fst-word-counter .fst-faq-item,
+.fst-word-counter .fst-related-link{
+  box-shadow:0 7px 22px rgba(31,35,75,.035);
+}
+
+.fst-word-counter .fst-related-link{
+  position:relative;
+  overflow:hidden;
+}
+
+.fst-word-counter .fst-related-link::after{
+  content:"";
+  position:absolute;
+  width:70px;
+  height:70px;
+  right:-28px;
+  bottom:-30px;
+  border-radius:50%;
+  background:rgba(99,102,241,.055);
+  pointer-events:none;
+}
+
+@media (max-width:700px){
+  .fst-word-counter .fst-tool-header{
+    padding:22px 14px 20px;
+    border-radius:20px;
+  }
+  .fst-word-counter .fst-tool-card{
+    padding:16px;
+    border-radius:20px;
+  }
+  .fst-tool-card-topline{
+    align-items:flex-start;
+  }
+  .fst-tool-live-pill{
+    font-size:10px;
+    padding:6px 8px;
+  }
+  .fst-tool-trust-row{
+    grid-template-columns:1fr;
+  }
+  .fst-word-counter #fstWordInput{
+    min-height:230px;
+  }
+}
+
+@media (max-width:430px){
+  .fst-tool-card-topline{
+    flex-direction:column;
+  }
+  .fst-tool-live-pill{
+    align-self:flex-start;
+  }
+  .fst-tool-card-icon{
+    flex-basis:38px;
+    width:38px;
+    height:38px;
+    border-radius:11px;
+  }
+  .fst-word-counter .fst-content-card{
+    padding:18px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .fst-word-counter .fst-stat,
+  .fst-word-counter .fst-btn,
+  .fst-word-counter .fst-related-link{
+    transition:none!important;
+  }
+}
+
+</style>
+
+
+<div class="fst-word-counter">
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="fst-tool-header">
+
+    <div class="fst-tool-badge">
+      <span></span>
+      FINITE SEO TOOLS
+    </div>
+<br />
+    <div class="fst-tool-kicker">
+      <span class="fst-tool-kicker-dot" aria-hidden="true"></span>
+      Fast &amp; Free Text Analysis
+    </div>
+
+    <h1>Word Counter</h1>
+
+    <p>
+      Count words, characters, sentences, paragraphs, links and
+      reading time instantly with our <strong>free online Word Counter</strong>.
+    </p>
+
+    <!-- LAST UPDATED -->
+
+    <div class="fst-last-updated">
+      <span class="fst-last-updated-icon">✓</span>
+
+      <span>
+        Last Updated:
+        <strong>September 24, 2026</strong>
+      </span>
+    </div>
+
+  </header>
+
+
+  <!-- ================= TOOL ================= -->
+
+  <section class="fst-tool-card">
+
+    <div class="fst-tool-card-topline">
+      <div class="fst-tool-card-title">
+        <span class="fst-tool-card-icon" aria-hidden="true">Aa</span>
+        <div class="fst-tool-card-heading">
+          <strong>Write or paste your text</strong>
+          <span>Results update instantly as you type.</span>
+        </div>
+      </div>
+      <span class="fst-tool-live-pill">Runs in your browser</span>
+    </div>
+
+    <div class="fst-input-label">
+
+      <label for="fstWordInput">
+        Enter or paste your text
+      </label>
+
+      <small id="fstLiveStatus" aria-live="polite">
+        Ready
+      </small>
+
+    </div>
+
+
+    <textarea
+      id="fstWordInput"
+      placeholder="Start typing or paste your text here..."
+      spellcheck="true"
+      aria-label="Enter text to count words"
+    ></textarea>
+
+
+    <!-- ================= STATISTICS ================= -->
+
+    <div class="fst-stats">
+
+      <div class="fst-stat">
+
+        <span
+          class="fst-stat-value"
+          id="fstWords"
+        >0</span>
+
+        <span class="fst-stat-label">
+          Words
+        </span>
+
+      </div>
+
+
+      <div class="fst-stat">
+
+        <span
+          class="fst-stat-value"
+          id="fstCharacters"
+        >0</span>
+
+        <span class="fst-stat-label">
+          Characters
+        </span>
+
+      </div>
+
+
+      <div class="fst-stat">
+
+        <span
+          class="fst-stat-value"
+          id="fstCharactersNoSpaces"
+        >0</span>
+
+        <span class="fst-stat-label">
+          Characters Without Spaces
+        </span>
+
+      </div>
+
+
+      <div class="fst-stat">
+
+        <span
+          class="fst-stat-value"
+          id="fstSentences"
+        >0</span>
+
+        <span class="fst-stat-label">
+          Sentences
+        </span>
+
+      </div>
+
+
+      <div class="fst-stat">
+
+        <span
+          class="fst-stat-value"
+          id="fstParagraphs"
+        >0</span>
+
+        <span class="fst-stat-label">
+          Paragraphs
+        </span>
+
+      </div>
+
+
+      <div class="fst-stat">
+
+        <span
+          class="fst-stat-value"
+          id="fstLinks"
+        >0</span>
+
+        <span class="fst-stat-label">
+          Links
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= READING TIME ================= -->
+
+    <div class="fst-reading-time">
+
+      <strong>
+        Estimated Reading Time
+      </strong>
+
+      <span id="fstReadingTime">
+        0 min
+      </span>
+
+    </div>
+
+
+    <!-- ================= ACTIONS ================= -->
+
+    <div class="fst-actions">
+
+      <button
+        type="button"
+        class="fst-btn fst-btn-primary"
+        id="fstCopyBtn"
+      >
+        Copy Text
+      </button>
+
+      <button
+        type="button"
+        class="fst-btn fst-btn-secondary"
+        id="fstClearBtn"
+      >
+        Clear
+      </button>
+
+    </div>
+
+    <div class="fst-tool-trust-row" aria-label="Tool benefits">
+      <div class="fst-tool-trust-item">
+        <span class="fst-tool-trust-icon" aria-hidden="true">✓</span>
+        <span>Free to use</span>
+      </div>
+      <div class="fst-tool-trust-item">
+        <span class="fst-tool-trust-icon" aria-hidden="true">⚡</span>
+        <span>Instant results</span>
+      </div>
+      <div class="fst-tool-trust-item">
+        <span class="fst-tool-trust-icon" aria-hidden="true">🔒</span>
+        <span>Browser-based counting</span>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ================= SEO CONTENT ================= -->
+
+  <section class="fst-content-card">
+
+    <div class="fst-section-label">About this tool</div>
+
+    <h2>Free Online Word Counter: Count Words, Characters &amp; More</h2>
+
+    <p>
+      Finite SEO Tools <strong>Word Counter</strong> is a free online text analysis tool
+      that instantly counts <strong>words, characters, characters without spaces,
+      sentences, paragraphs, links, and estimated reading time</strong>. Type directly
+      into the editor or paste text from a document, email, notes app, website, or
+      another writing tool and see the results update automatically.
+    </p>
+
+    <p>
+      A word counter is useful whenever the length of your writing matters. Students
+      can check assignment requirements, writers can track drafts, bloggers can review
+      article length, marketers can check copy limits, and <a href="https://www.finiteseotools.xyz/2026/09/what-is-seo-.html#What_Is_SEO?";>SEO</a> professionals can
+      quickly measure website content. No account or software installation is needed.
+    </p>
+
+    <h2>What Is a Word Counter?</h2>
+
+    <p>
+      A <strong>word counter</strong> is a tool that analyzes written text and calculates
+      how many words it contains. Modern word counters can also provide additional
+      text statistics, such as character count, sentence count, paragraph count,
+      link count, and estimated reading time.
+    </p>
+
+    <p>
+      Instead of manually counting a document, you can paste the text into an online
+      word counter and get an immediate result. Finite Word Counter is designed for
+      quick, everyday text analysis while keeping the interface simple and easy to use
+      on desktop, tablet, and mobile devices.
+    </p>
+
+    <h3>Why Use a Word Counter?</h3>
+
+    <ul>
+      <li><strong>Check word limits:</strong> Quickly see whether an essay, article, application, or other document meets a required length.</li>
+      <li><strong>Check character limits:</strong> Character counts can be useful for forms, social posts, titles, descriptions, and other fields with length restrictions.</li>
+      <li><strong>Track writing progress:</strong> Monitor the size of a draft, section, chapter, or article as you write.</li>
+      <li><strong>Review content structure:</strong> Sentence and paragraph counts give you a quick overview of how your text is organized.</li>
+      <li><strong>Estimate reading time:</strong> Use the reading-time estimate to understand roughly how long a reader may need to read your text.</li>
+      <li><strong>Save time:</strong> Get several useful text metrics at once instead of counting them manually.</li>
+    </ul>
+
+    <h2>How to Use the Finite Word Counter</h2>
+
+    <p>
+      Using the tool takes only a few seconds. Follow these steps:
+    </p>
+
+    <h3>Step 1: Open the Word Counter</h3>
+
+    <p>
+      Open the <a href="https://www.finiteseotools.xyz/p/words-counter.html"><strong>Finite Word Counter Tool</strong></a>
+      and you will see the text input area and live statistics.
+    </p>
+
+    <div class="separator" style="clear: both; text-align: center;">
+      <img
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0j_hPOUJA80V5bx78xjHe8ytqjWxfRKT5eYqqjiLJKO3KnmacJ4r8VsymOWwKxTTa98hIEyfyNELI7eWNZ-Pj2hlT-05RkB-sppDfBJpk1Nik41Pn3W4GOSAIxCz5G9WcOtvedebZ95rGYVRpVy_RFnkBf_tO05jk0aXInkDZA5VIjWN_EXadMOOncJQ/s1600/How-to-Use-Finite-Word-Counter-Screenshot-Step1.jpg"
+        alt="Finite Word Counter Tool showing the text input area"
+        loading="lazy"
+        style="max-width:100%;height:auto;border-radius:12px;"
+      />
+    </div>
+
+    <h3>Step 2: Paste or Type Your Text</h3>
+
+    <p>
+      Copy text from a document, email, notes app, browser, or another source and
+      paste it into the input box. You can also start typing directly.
+    </p>
+
+    <div class="separator" style="clear: both; text-align: center;">
+      <img
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_9RV1qcb9Y2Isk4DA0jAtLOSz8nCX3XBSDpg_Tz9-qtE2jX6eARhOsVbSIKvg7xDtBUcAlkunZjWZXbf2plA564mr0-MyUj18qPe2oRlwnqDaIaSKZWXzfUmA58xtSYNmhMUxYGPTqEfch1WWVlFshLCihFYwTTnoI-1v77RcLolSoncs7lmdvRnI57Q/s1600/How-to-Use-Finite-Word-Counter-Step2.jpg"
+        alt="Text pasted into the Finite Word Counter input box"
+        loading="lazy"
+        style="max-width:100%;height:auto;border-radius:12px;"
+      />
+    </div>
+
+    <h3>Step 3: Get Instant Analysis</h3>
+
+    <p>
+      As you type or paste text, the tool automatically updates the statistics.
+      You can see the number of words, characters, characters without spaces,
+      sentences, paragraphs, and links.
+    </p>
+
+    <div class="separator" style="clear: both; text-align: center;">
+      <img
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNb6ywWYOXu8uNrRqDyUJJWKMjD7OU90nPCgN9SmBTnN81njmUsWn3rMY_bDiCO77Rna97fth53xvaGBqh5gBEBUHh4t7mx846Ljk9l4qVZNuqshyc9VWxSuE72iPCgjJJAEjWf0CRZZz8BFiGQuAsYfrGW55T4Shzr1PKpKr1VAKnM2DYCUS3x6O9Q14/s1600/How-to-Use-Finite-Word-Counter-Step3.jpg"
+        alt="Finite Word Counter displaying live text statistics"
+        loading="lazy"
+        style="max-width:100%;height:auto;border-radius:12px;"
+      />
+    </div>
+
+    <h3>Step 4: Review the Results</h3>
+
+    <p>
+      Review the displayed metrics to understand the size and basic structure of
+      your text. The tool also provides an estimated reading time based on the
+      word count.
+    </p>
+
+    <div class="separator" style="clear: both; text-align: center;">
+      <img
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnBSVgUmJ5maUfPhxvchf3gJUnvrEpdr_K7lQuaD0F_5EVxtDKMruTDn6lmggIUmfJ6nsUsocEBaVRsuMgGFwiNc1eR8GcBUZPdwkS4slPpaeSaOupTHp1SKYKkuW0YIuvje1EzFhBTduo4uBVYX2vo3Ronm0kPX_gvd2Qo5L_MFWD-5fUC6gui9Q6xeo/s1600/How-to-Use-Finite-Word-Counter-Step4.jpg"
+        alt="Finite Word Counter results including words, characters and reading time"
+        loading="lazy"
+        style="max-width:100%;height:auto;border-radius:12px;"
+      />
+    </div>
+
+    <h3>Step 5: Clear and Reuse</h3>
+
+    <p>
+      When you are finished, click <strong>Clear</strong> to remove the current text
+      and start a new analysis. You can also use <strong>Copy Text</strong> to copy
+      the text currently inside the editor.
+    </p>
+
+    <div class="separator" style="clear: both; text-align: center;">
+      <img
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEih-W4L4guhuc3P-PIojNBWBg7654kJ0b4tlPwwBJlgDrX4vUioH5x-DonfIE35wjODC7QLzQrs2g9XZx2Y7MVJiQHJE6-UdDNHogF7X0Jjfu-dFU8TFPj48MW78ILuOR9pzfRzmw_sKHKWW-SufAd_DmorTPRj1urpHGqZ2mGSEee1UtsbOko3i3FLN94/s1600/How-to-Use-Finite-Word-Counter-Step5.jpg"
+        alt="Finite Word Counter Clear and Copy Text controls"
+        loading="lazy"
+        style="max-width:100%;height:auto;border-radius:12px;"
+      />
+    </div>
+
+    <h2>What Does the Word Counter Measure?</h2>
+
+    <p>
+      Finite Word Counter provides several useful metrics so you can understand
+      your text at a glance.
+    </p>
+
+    <ul>
+      <li><strong>Words:</strong> The number of words detected in the text.</li>
+      <li><strong>Characters:</strong> The total number of characters, including spaces.</li>
+      <li><strong>Characters Without Spaces:</strong> The number of characters after whitespace is removed.</li>
+      <li><strong>Sentences:</strong> The number of sentences detected from common sentence-ending punctuation.</li>
+      <li><strong>Paragraphs:</strong> The number of non-empty text blocks separated by blank lines.</li>
+      <li><strong>Links:</strong> The number of common URLs or web addresses detected in the text.</li>
+      <li><strong>Estimated Reading Time:</strong> An approximate reading time calculated from the detected word count.</li>
+    </ul>
+
+    <h2>Word Count vs. Character Count</h2>
+
+    <p>
+      <strong>Word count</strong> measures the number of words in your text, while
+      <strong>character count</strong> measures individual characters. Characters
+      include letters, numbers, punctuation, spaces, and other characters present
+      in the text.
+    </p>
+
+    <p>
+      This difference matters because some writing requirements are expressed in
+      words while others are expressed in characters. Checking both metrics can
+      help you prepare content for different requirements without manually counting.
+    </p>
+
+    <h2>Who Can Use a Word Counter?</h2>
+
+    <ol>
+      <li><strong>Students:</strong> Check essays, assignments, reports, and other academic writing against required word counts.</li>
+      <li><strong>Content writers:</strong> Measure blog posts, articles, website copy, and client deliverables.</li>
+      <li><strong>Bloggers:</strong> Track the length of drafts and individual sections before publishing.</li>
+      <li><strong>SEO professionals:</strong> Review the length of website content and supporting copy as part of a broader SEO workflow.</li>
+      <li><strong>Marketers:</strong> Check copy for forms, campaigns, landing pages, and social platforms where length matters.</li>
+      <li><strong>Authors:</strong> Track the size of chapters, short stories, and manuscripts.</li>
+      <li><strong>Job seekers:</strong> Check resumes, cover letters, and application responses when a length limit applies.</li>
+      <li><strong>Editors and translators:</strong> Compare the size of source and edited text quickly.</li>
+    </ol>
+
+    <h2>Common Word Counter Use Cases</h2>
+
+    <ul>
+      <li>Checking whether a college assignment meets a required word count.</li>
+      <li>Measuring the length of a blog post before publishing.</li>
+      <li>Checking the size of website copy and product descriptions.</li>
+      <li>Reviewing character limits for forms and social media content.</li>
+      <li>Estimating how long an article may take to read.</li>
+      <li>Tracking the progress of a writing project or draft.</li>
+      <li>Counting words in a proposal, report, newsletter, or email.</li>
+      <li>Checking text before moving it into another editor with a length restriction.</li>
+    </ul>
+
+    <h2>How Accurate Is the Reading Time?</h2>
+
+    <p>
+      Reading time is an <strong>estimate</strong>, not a guaranteed measurement.
+      The tool calculates it from the detected word count using a reading-speed
+      assumption. Actual reading time can vary depending on the reader, language,
+      subject matter, formatting, and complexity of the text.
+    </p>
+
+    <h2>Word Counter for SEO Content</h2>
+
+    <p>
+      A word counter can be useful during SEO content planning because it gives you
+      a quick measurement of how much text is on a page or in a draft. It can help
+      writers compare sections, check content requirements, and keep an article
+      organized.
+    </p>
+
+    <p>
+      However, there is no universal word count that guarantees better search
+      rankings. Content length should be determined by the topic, <a href="https://www.finiteseotools.xyz/2026/09/what-is-seo-.html#What_Is_Search_Intent?";>search intent</a>,
+      audience needs, and the information required to answer the query. Use word
+      count as a planning and editing metric rather than as a standalone SEO ranking
+      factor.
+    </p>
+
+    <p>
+      For additional SEO analysis, you can also use our
+      <a href="https://www.finiteseotools.xyz/p/keyword-density-checker.html">Keyword Density Checker</a>
+      and <a href="https://www.finiteseotools.xyz/p/serp-snippet-preview-tool.html">SERP Snippet Preview Tool</a>.
+    </p>
+
+    <h2>Tips for Using a Word Counter Effectively</h2>
+
+    <ul>
+      <li>Check your word count after completing a meaningful section instead of interrupting your writing constantly.</li>
+      <li>Use character count when a platform or form specifies a character limit.</li>
+      <li>Review sentence and paragraph counts when editing long passages.</li>
+      <li>Use estimated reading time to set expectations for readers.</li>
+      <li>Remember that word count alone does not determine content quality or SEO performance.</li>
+      <li>Use a grammar, spelling, or readability tool separately when you need deeper writing analysis.</li>
+    </ul>
+
+    <h2>Privacy and Browser-Based Processing</h2>
+
+    <p>
+      The counting functionality of Finite Word Counter runs directly in your
+      browser. The tool does not need to send your text to a server to calculate
+      the word, character, sentence, paragraph, link, and reading-time statistics.
+      This makes the tool suitable for quick analysis of text without creating an
+      account or uploading the text for counting.
+    </p>
+
+    <p>
+      As with any website, you should avoid entering information that you do not
+      want to process in a browser or expose to third-party website services.
+      For the counting functionality itself, the calculations are performed
+      locally in the browser.
+    </p>
+
+    <h2>Limitations</h2>
+
+    <p>
+      Finite Word Counter is designed for fast text counting and basic analysis.
+      It is not intended to replace a full writing, grammar, readability, or SEO
+      platform. For example, it does not provide advanced grammar correction,
+      plagiarism analysis, keyword strategy, tone analysis, or collaborative
+      document editing.
+    </p>
+
+    <p>
+      Word and sentence detection also depends on the text entered and the counting
+      rules used by the tool. Different applications may use different rules and
+      therefore produce slightly different results for unusual formatting, symbols,
+      abbreviations, or specialized text.
+    </p>
+
+    <h2>Frequently Used Alternatives</h2>
+
+    <ul>
+      <li><strong>Need grammar and spelling analysis?</strong> Use a dedicated grammar or writing assistant.</li>
+      <li><strong>Working inside a document?</strong> Google Docs, Microsoft Word, and similar editors have built-in counting features.</li>
+      <li><strong>Need plagiarism checking?</strong> Use a dedicated plagiarism checker.</li>
+      <li><strong>Need SEO analysis?</strong> Combine word counting with keyword, technical SEO, and SERP analysis tools.</li>
+    </ul>
+
+    <h2>Quick Reference: Text Metrics</h2>
+
+    <div class="metrics-table-wrapper" style="width:100%;overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid #e5e7eb;">
+      <table class="metrics-table" style="width:100%;border-collapse:collapse;min-width:650px;background:#fff;">
+        <thead>
+          <tr>
+            <th style="background:#6366f1;color:#fff;padding:14px 16px;text-align:left;">Metric</th>
+            <th style="background:#6366f1;color:#fff;padding:14px 16px;text-align:left;">What It Means</th>
+            <th style="background:#6366f1;color:#fff;padding:14px 16px;text-align:left;">Useful For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">Word Count</td>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;">Number of words detected</td>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;">Assignments, articles, reports and drafts</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">Characters</td>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;">Characters including spaces</td>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;">Character-limited fields and copy</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">Characters Without Spaces</td>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;">Characters after whitespace is removed</td>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;">Alternative character-count requirements</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">Sentences</td>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;">Detected sentences</td>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;">Basic structure and editing</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">Paragraphs</td>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;">Non-empty blocks separated by blank lines</td>
+            <td style="padding:14px 16px;border-bottom:1px solid #e5e7eb;">Content structure and organization</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 16px;font-weight:600;">Reading Time</td>
+            <td style="padding:14px 16px;">Approximate reading duration</td>
+            <td style="padding:14px 16px;">Reader experience and content planning</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Ready to Count?</h2>
+
+    <p>
+      Paste your text into the <a href="https://www.finiteseotools.xyz/p/words-counter.html"><strong>free Finite Word Counter</strong></a>
+      and get instant text statistics. Whether you are checking an assignment,
+      editing a blog post, preparing website copy, or reviewing an SEO draft,
+      the tool gives you the essential counts in one place.
+    </p>
+
+  </section>
+
+  <!-- ================= FAQ ================= -->
+
+  <section class="fst-faq">
+
+    <div class="fst-faq-heading">
+
+      <div class="fst-section-label">Quick answers</div>
+
+      <span class="fst-faq-badge">FAQ</span>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="fst-faq-divider"></div>
+
+    </div>
+
+    <div class="fst-faq-item active">
+      <button class="fst-faq-question" type="button" aria-expanded="true">
+        <span>What is a word counter?</span>
+        <span class="fst-faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="fst-faq-answer">
+        A <strong>word counter</strong> is a tool that counts the words in a piece
+        of text. Finite Word Counter also calculates characters, characters without
+        spaces, sentences, paragraphs, links, and estimated reading time.
+      </div>
+    </div>
+
+    <div class="fst-faq-item">
+      <button class="fst-faq-question" type="button" aria-expanded="false">
+        <span>Is Finite Word Counter free?</span>
+        <span class="fst-faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="fst-faq-answer">
+        Yes. Finite SEO Tools Word Counter is free to use and does not require an
+        account or software installation.
+      </div>
+    </div>
+
+    <div class="fst-faq-item">
+      <button class="fst-faq-question" type="button" aria-expanded="false">
+        <span>Does the Word Counter count characters?</span>
+        <span class="fst-faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="fst-faq-answer">
+        Yes. It shows total character count as well as character count with
+        whitespace removed.
+      </div>
+    </div>
+
+    <div class="fst-faq-item">
+      <button class="fst-faq-question" type="button" aria-expanded="false">
+        <span>Does the tool count sentences and paragraphs?</span>
+        <span class="fst-faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="fst-faq-answer">
+        Yes. The tool calculates sentence and paragraph counts from the text you
+        enter. Sentence detection uses common sentence-ending punctuation, while
+        paragraphs are based on non-empty blocks separated by blank lines.
+      </div>
+    </div>
+
+    <div class="fst-faq-item">
+      <button class="fst-faq-question" type="button" aria-expanded="false">
+        <span>Can I use this Word Counter for SEO content?</span>
+        <span class="fst-faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="fst-faq-answer">
+        Yes. You can use it to check the length of blog posts, articles, website
+        copy, product descriptions, and other SEO content. Word count is a planning
+        metric and does not by itself guarantee better search rankings.
+      </div>
+    </div>
+
+    <div class="fst-faq-item">
+      <button class="fst-faq-question" type="button" aria-expanded="false">
+        <span>Does the tool count links?</span>
+        <span class="fst-faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="fst-faq-answer">
+        Yes. Finite Word Counter detects common URLs and web addresses in the text
+        and displays the number of detected links.
+      </div>
+    </div>
+
+    <div class="fst-faq-item">
+      <button class="fst-faq-question" type="button" aria-expanded="false">
+        <span>Is my text uploaded to a server?</span>
+        <span class="fst-faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="fst-faq-answer">
+        The counting functionality runs directly in your browser. The tool does not
+        need to send your text to a server to calculate the displayed statistics.
+      </div>
+    </div>
+
+    <div class="fst-faq-item">
+      <button class="fst-faq-question" type="button" aria-expanded="false">
+        <span>Does the Word Counter work on mobile devices?</span>
+        <span class="fst-faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="fst-faq-answer">
+        Yes. The interface is responsive and can be used on smartphones, tablets,
+        and desktop computers.
+      </div>
+    </div>
+
+    <div class="fst-faq-item">
+      <button class="fst-faq-question" type="button" aria-expanded="false">
+        <span>How is reading time calculated?</span>
+        <span class="fst-faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="fst-faq-answer">
+        The reading-time estimate is calculated from the detected word count using
+        a fixed reading-speed assumption. It is only an estimate because actual
+        reading speed varies between people and types of content.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ================= RELATED TOOLS ================= -->
+
+  <section class="fst-related">
+
+    <div class="fst-section-label">Keep exploring</div>
+
+    <h2>
+      Related Tools
+    </h2>
+
+    <div class="fst-related-grid">
+
+      <a
+        href="https://www.finiteseotools.xyz/p/text-summarizer.html"
+        class="fst-related-link"
+      >
+
+        <span class="fst-related-name">
+          Text Summarizer
+        </span>
+
+        <span class="fst-related-action">
+          Try Tool
+          <span class="fst-related-arrow">→</span>
+        </span>
+
+      </a>
+
+
+      <a
+        href="https://www.finiteseotools.xyz/p/website-seo-analyzer.html"
+        class="fst-related-link"
+      >
+
+        <span class="fst-related-name">
+          Website SEO Analyzer
+        </span>
+
+        <span class="fst-related-action">
+          Try Tool
+          <span class="fst-related-arrow">→</span>
+        </span>
+
+      </a>
+
+
+      <a
+        href="https://www.finiteseotools.xyz/p/website-speed-checker.html"
+        class="fst-related-link"
+      >
+
+        <span class="fst-related-name">
+          Website Speed Checker
+        </span>
+
+        <span class="fst-related-action">
+          Try Tool
+          <span class="fst-related-arrow">→</span>
+        </span>
+
+      </a>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script>
+(function () {
+
+  "use strict";
+
+  const input =
+    document.getElementById("fstWordInput");
+
+  const wordsEl =
+    document.getElementById("fstWords");
+
+  const charsEl =
+    document.getElementById("fstCharacters");
+
+  const charsNoSpacesEl =
+    document.getElementById("fstCharactersNoSpaces");
+
+  const sentencesEl =
+    document.getElementById("fstSentences");
+
+  const paragraphsEl =
+    document.getElementById("fstParagraphs");
+
+  const linksEl =
+    document.getElementById("fstLinks");
+
+  const readingTimeEl =
+    document.getElementById("fstReadingTime");
+
+  const clearBtn =
+    document.getElementById("fstClearBtn");
+
+  const copyBtn =
+    document.getElementById("fstCopyBtn");
+
+  const statusEl =
+    document.getElementById("fstLiveStatus");
+
+
+  /* =====================================================
+     COUNT TEXT
+  ===================================================== */
+
+  function countText() {
+
+    const text = input.value;
+
+    /* Characters */
+
+    const characters =
+      text.length;
+
+
+    /* Characters without spaces */
+
+    const charactersNoSpaces =
+      text.replace(/\s/g, "").length;
+
+
+    /* Words */
+
+    const trimmed =
+      text.trim();
+
+    const words =
+      trimmed
+        ? trimmed
+            .split(/\s+/)
+            .filter(Boolean)
+            .length
+        : 0;
+
+
+    /* Sentences */
+
+    const sentenceMatches =
+      text.match(
+        /[^.!?]+[.!?]+(?=\s|$)/g
+      );
+
+    const sentences =
+      sentenceMatches
+        ? sentenceMatches.length
+        : (trimmed ? 1 : 0);
+
+
+    /* Paragraphs */
+
+    const paragraphs =
+      trimmed
+        ? trimmed
+            .split(/\n\s*\n/)
+            .filter(function (paragraph) {
+
+              return paragraph
+                .trim()
+                .length > 0;
+
+            })
+            .length
+        : 0;
+
+
+    /* =================================================
+       LINK COUNTER
+    ================================================= */
+
+    const urlPattern =
+      /(?:https?:\/\/|www\.)[^\s]+|(?:^|\s)(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[^\s]*)?/g;
+
+    const linkMatches =
+      text.match(urlPattern);
+
+    const links =
+      linkMatches
+        ? linkMatches.length
+        : 0;
+
+
+    /* Reading Time */
+
+    const minutes =
+      words === 0
+        ? 0
+        : Math.max(
+            1,
+            Math.ceil(words / 200)
+          );
+
+
+    /* Update UI */
+
+    wordsEl.textContent =
+      words.toLocaleString();
+
+    charsEl.textContent =
+      characters.toLocaleString();
+
+    charsNoSpacesEl.textContent =
+      charactersNoSpaces.toLocaleString();
+
+    sentencesEl.textContent =
+      sentences.toLocaleString();
+
+    paragraphsEl.textContent =
+      paragraphs.toLocaleString();
+
+    linksEl.textContent =
+      links.toLocaleString();
+
+    readingTimeEl.textContent =
+      minutes === 1
+        ? "1 min"
+        : minutes + " min";
+
+    statusEl.textContent =
+      words > 0
+        ? "Counting..."
+        : "Ready";
+
+  }
+
+
+  /* =====================================================
+     LIVE COUNTING
+  ===================================================== */
+
+  input.addEventListener(
+    "input",
+    countText
+  );
+
+
+  /* =====================================================
+     CLEAR
+  ===================================================== */
+
+  clearBtn.addEventListener(
+    "click",
+    function () {
+
+      input.value = "";
+
+      countText();
+
+      input.focus();
+
+    }
+  );
+
+
+  /* =====================================================
+     COPY
+  ===================================================== */
+
+  copyBtn.addEventListener(
+    "click",
+    async function () {
+
+      const text =
+        input.value;
+
+      if (!text.trim()) {
+
+        copyBtn.textContent =
+          "Nothing to Copy";
+
+        setTimeout(
+          function () {
+
+            copyBtn.textContent =
+              "Copy Text";
+
+          },
+          1500
+        );
+
+        return;
+      }
+
+
+      try {
+
+        await navigator.clipboard
+          .writeText(text);
+
+        copyBtn.textContent =
+          "Copied";
+
+      } catch (error) {
+
+        input.select();
+
+        document.execCommand(
+          "copy"
+        );
+
+        copyBtn.textContent =
+          "Copied";
+
+      }
+
+
+      setTimeout(
+        function () {
+
+          copyBtn.textContent =
+            "Copy Text";
+
+        },
+        1500
+      );
+
+    }
+  );
+
+
+  /* =====================================================
+     FAQ ACCORDION
+  ===================================================== */
+
+  const faqItems =
+    document.querySelectorAll(
+      ".fst-faq-item"
+    );
+
+
+  faqItems.forEach(
+    function (item) {
+
+      const question =
+        item.querySelector(
+          ".fst-faq-question"
+        );
+
+
+      question.addEventListener(
+        "click",
+        function () {
+
+          const isActive =
+            item.classList.contains(
+              "active"
+            );
+
+
+          /* Close all */
+
+          faqItems.forEach(
+            function (otherItem) {
+
+              otherItem.classList.remove(
+                "active"
+              );
+
+              const otherQuestion =
+                otherItem.querySelector(
+                  ".fst-faq-question"
+                );
+
+              if (otherQuestion) {
+
+                otherQuestion.setAttribute(
+                  "aria-expanded",
+                  "false"
+                );
+
+              }
+
+            }
+          );
+
+
+          /* Open selected */
+
+          if (!isActive) {
+
+            item.classList.add(
+              "active"
+            );
+
+            question.setAttribute(
+              "aria-expanded",
+              "true"
+            );
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+  /* Initial calculation */
+
+  countText();
+
+})();
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a word counter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A word counter is a tool that counts the words in a piece of text. Finite Word Counter also calculates characters, characters without spaces, sentences, paragraphs, links, and estimated reading time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Finite Word Counter free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Finite SEO Tools Word Counter is free to use and does not require an account or software installation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the Word Counter count characters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It shows total character count as well as character count with whitespace removed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the tool count sentences and paragraphs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The tool calculates sentence and paragraph counts from the text you enter. Sentence detection uses common sentence-ending punctuation, while paragraphs are based on non-empty blocks separated by blank lines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this Word Counter for SEO content?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can use it to check the length of blog posts, articles, website copy, product descriptions, and other SEO content. Word count is a planning metric and does not by itself guarantee better search rankings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the tool count links?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Finite Word Counter detects common URLs and web addresses in the text and displays the number of detected links."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my text uploaded to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The counting functionality runs directly in your browser. The tool does not need to send your text to a server to calculate the displayed statistics."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the Word Counter work on mobile devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The interface is responsive and can be used on smartphones, tablets, and desktop computers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is reading time calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The reading-time estimate is calculated from the detected word count using a fixed reading-speed assumption. It is only an estimate because actual reading speed varies between people and types of content."
+      }
+    }
+  ]
+}
+</script>
