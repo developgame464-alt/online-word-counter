@@ -379,7 +379,7 @@ When suggesting a feature, explain:
 
 Creator and author of the Word Counter project. The project is maintained as part of the Finite SEO Tools collection of browser-based SEO, writing, and productivity utilities.
 
-**LinkedIn:** https://www.linkedin.com/in/kartik-garg-628a96437
+**LinkedIn:** https://www.linkedin.com/in/gkartik820
 
 ---
 
