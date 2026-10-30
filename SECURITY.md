@@ -133,7 +133,7 @@ For security-related concerns:
 **Kartik Garg**  
 **Project:** Online Word Counter / Finite SEO Tools  
 **Email:** help.finitestore@gmail.com  
-**LinkedIn:** https://www.linkedin.com/in/kartik-garg-628a96437
+**LinkedIn:** https://www.linkedin.com/in/gkartik820
 
 ---
 
